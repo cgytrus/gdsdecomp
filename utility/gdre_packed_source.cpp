@@ -293,9 +293,7 @@ bool GDREPackedSource::try_open_pack(const String &p_path, bool p_replace_files,
 			uint8_t xd = f->get_8();
 			if (xd == 0x0) {
 				f->get_buffer((uint8_t *)cs.ptr(), sl);
-				f->seek(f->get_position() - 1);
-			}
-			else {
+			} else {
 				cs[0] = xd;
 				f->get_buffer((uint8_t *)cs.ptr() + 1, sl - 1);
 			}
