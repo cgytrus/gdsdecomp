@@ -289,15 +289,7 @@ bool GDREPackedSource::try_open_pack(const String &p_path, bool p_replace_files,
 		uint32_t sl = f->get_32();
 		CharString cs;
 		cs.resize(sl + 1);
-		if (sl > 0) {
-			uint8_t xd = f->get_8();
-			if (xd == 0x0) {
-				f->get_buffer((uint8_t *)cs.ptr(), sl);
-			} else {
-				cs[0] = xd;
-				f->get_buffer((uint8_t *)cs.ptr() + 1, sl - 1);
-			}
-		}
+		f->get_buffer((uint8_t *)cs.ptr(), sl);
 		cs[sl] = 0;
 
 		String path;
